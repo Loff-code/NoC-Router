@@ -1,0 +1,19 @@
+[0m[[0m[31merror[0m] [0m[0mscala.MatchError: List(UInt<3>(0), UInt<3>(1), UInt<3>(2), UInt<3>(3), UInt<3>(4), UInt<3>(5)) (of class scala.collection.immutable.$colon$colon)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Hello.$anonfun$x$1$1(Hello.scala:12)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.plugin.package$.autoNameRecursivelyProduct(package.scala:48)[0m
+[0m[[0m[31merror[0m] [0m[0m	at Hello.<init>(Hello.scala:12)[0m
+[0m[[0m[31merror[0m] [0m[0m	at HelloMain$.$anonfun$new$28(Hello.scala:56)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.Module$.evaluate(Module.scala:88)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.Module$.do_apply(Module.scala:35)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.stage.phases.Elaborate.$anonfun$transform$2(Elaborate.scala:52)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.Builder$.$anonfun$buildImpl$1(Builder.scala:1042)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.Builder$.buildImpl(Builder.scala:1032)[0m
+[0m[[0m[31merror[0m] [0m[0m	at chisel3.internal.Builder$.$anonfun$build$1(Builder.scala:1023)[0m
+[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.$anonfun$makeScope$4(Logger.scala:148)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.util.DynamicVariable.withValue(DynamicVariable.scala:59)[0m
+[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.makeScope(Logger.scala:146)[0m
+[0m[[0m[31merror[0m] [0m[0m	at logger.Logger$.makeScope(Logger.scala:133)[0m
+[0m[[0m[31merror[0m] [0m[0m	at ... ()[0m
+[0m[[0m[31merror[0m] [0m[0m	at ... (Stack trace trimmed to user code only. Rerun with --full-stacktrace to see the full stack trace)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) scala.MatchError: List(UInt<3>(0), UInt<3>(1), UInt<3>(2), UInt<3>(3), UInt<3>(4), UInt<3>(5)) (of class scala.collection.immutable.$colon$colon)[0m

@@ -1,0 +1,4 @@
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/Code/risc/chisel-lab/lab1/src/main/scala/Hello.scala:33:11: reassignment to val[0m
+[0m[[0m[31merror[0m] [0m[0m      imm = instruction(31,20)[0m
+[0m[[0m[31merror[0m] [0m[0m          ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m
