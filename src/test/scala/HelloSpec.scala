@@ -8,7 +8,7 @@ class tester extends AnyFlatSpec with ChiselScalatestTester {
       .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
         dut.clock.setTimeout(0)
 
-        val hdr1 = ((BigInt(0b1100101110101) << 35-13)).U(35.W)
+        val hdr1 = (BigInt(0b1100101110101) << 35-15).U(35.W)
         val v496 = (((BigInt(0b100) << 32) | BigInt(496)).U(35.W))
         val v497 = (((BigInt(0b100) << 32) | BigInt(497)).U(35.W))
         val v498 = (((BigInt(0b100) << 32) | BigInt(498)).U(35.W))

@@ -3,4 +3,4 @@ route = [n, e, s, w, n, s, n, s]
 str = "0b110"
 for i in route:
     str += bin(i).split("b")[1]
-print(str)
+print(f"(BigInt({str}) << 35-{len(str)}).U(35.W)")
