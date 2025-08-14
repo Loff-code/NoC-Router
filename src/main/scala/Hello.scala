@@ -12,40 +12,55 @@ class Hello extends Module {
   // 100- local
 
   val linkStageReg = RegNext(io.in)
-  val HPUStageReg     = VecInit(Seq.fill(5)(RegInit(0.U(35.W))))
-  val crossbarStageReg = VecInit(Seq.fill(5)(RegInit(0.U(35.W))))
-  val ongoing       = VecInit(Seq.fill(5)(RegInit(false.B)))
-  val direction   =  VecInit(Seq.fill(5)(RegInit(0.U(2.W))))
+  val HPUStageReg       = RegInit(VecInit(Seq.fill(5)(0.U(35.W))))
+  val crossbarStageReg  = RegInit(VecInit(Seq.fill(5)(0.U(35.W))))
+  val ongoing           = RegInit(VecInit(Seq.fill(5)(false.B)))
+  val direction         = RegInit(VecInit(Seq.fill(5)(0.U(2.W))))
+  val valid = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(34))))
+  val header = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(33))))
+  val end = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(32))))
+  val data = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(31, 0))))
+  val headerData = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(31, 0) << 2)))
+
 
   for (i <- 0 until 5) {
-    val valid  = Wire(Bool())
-    val header = Wire(Bool())
-    val end    = Wire(Bool())
-    val data   = Wire(UInt(32.W))
-    val headerData = Wire(UInt(34.W))
-
-    valid  := linkStageReg(i)(34)
-    header := linkStageReg(i)(33)
-    end    := linkStageReg(i)(32)
-    data   := linkStageReg(i)(31, 0)
-    headerData := linkStageReg(i)(31, 0)<<2
-    when(header && valid) {
+    valid(i)  := linkStageReg(i)(34)
+    header(i) := linkStageReg(i)(33)
+    end(i)    := linkStageReg(i)(32)
+    data(i)   := linkStageReg(i)(31, 0)
+    headerData(i) := linkStageReg(i)(31, 0)<<2
+    when(header(i) && valid(i)) {
       ongoing(i) := true.B
-      direction(i) := data(31, 30)
-      data := headerData(31,0)
+      direction(i) := data(i)(31, 30)
+      data(i) := headerData(i)(31,0)
     }
-    when(end && valid) {
+    when(RegNext(end(i) && valid(i))) {
       ongoing(i) := false.B
     }
-    HPUStageReg(i) := Cat(valid, header, end, data)
-    crossbarStageReg(direction(i)) := Mux(ongoing(i) === true.B, HPUStageReg(i), 0.U)
-    when(direction(i) === i.U){
-      crossbarStageReg(4) := HPUStageReg(i)
+    HPUStageReg(i) := Cat(valid(i), header(i), end(i), data(i))
+//    crossbarStageReg(direction(i)) := (Mux(ongoing(i) === true.B, HPUStageReg(i), crossbarStageReg(direction(i))))
+
+    when(ongoing(i) === true.B){
+       when(direction(i) === i.U){
+        crossbarStageReg(4) := (HPUStageReg(i))
+      }.otherwise{
+         crossbarStageReg(direction(i)) := HPUStageReg(i)
+       }
+    }.otherwise{
+      when(direction(i) === i.U){
+        crossbarStageReg(4) := 0.U
+      }.otherwise{
+        crossbarStageReg(direction(i)) := 0.U
+      }
     }
+
+
+
   }
   io.out := crossbarStageReg
 }
 
-object RouterModuleMain extends App {
+object Hello extends App {
   emitVerilog(new Hello())
+  Array("--target-dir", "generated")
 }

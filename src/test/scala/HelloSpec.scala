@@ -1,24 +1,39 @@
 import chisel3._
 import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
-import chiseltest.simulator.WriteVcdAnnotation
-import chiseltest.simulator.VerilatorBackendAnnotation
 
-class HelloSpec extends AnyFlatSpec with ChiselScalatestTester {
-  "Hello" should "just print the LED value" in {
+class tester extends AnyFlatSpec with ChiselScalatestTester {
+  "Bullet test" should "pass" in {
     test(new Hello())
-      .withAnnotations(Seq(
-        VerilatorBackendAnnotation, // Use Verilator for speed & VCD support
-        WriteVcdAnnotation          // Actually write the waveform
-      )) { dut =>
-//        dut.clock.setTimeout(0)
-//        // Here you can poke signals and step the clock
-//        dut.io.start.poke(true.B)
-//        dut.io.a.poke(48.U)
-//        dut.io.b.poke(18.U)
-//        dut.clock.step(10)
-//        dut.io.start.poke(false.B)
-//        dut.clock.step(100)
+      .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
+        dut.clock.setTimeout(0)
+
+        val hdr1 = ((BigInt(0b110000111) << 26)).U(35.W)
+        val v496 = (((BigInt(0b100) << 32) | BigInt(496)).U(35.W))
+        val v497 = (((BigInt(0b100) << 32) | BigInt(497)).U(35.W))
+        val v498 = (((BigInt(0b100) << 32) | BigInt(498)).U(35.W))
+        val v499 = (((BigInt(0b101) << 32) | BigInt(499)).U(35.W))
+        val v500 = (((BigInt(0b101) << 32) | BigInt(500)).U(35.W))
+
+        for (i <- 0 until 5) {
+          dut.io.in(i).poke(0.U(35.W))
+        }
+        dut.io.in(1).poke(hdr1)
+        dut.io.in(2).poke(hdr1)
+        dut.clock.step(1)
+        dut.io.in(1).poke(v496)
+        dut.io.in(2).poke(v497)
+        dut.clock.step(1)
+        dut.io.in(1).poke(v498)
+        dut.io.in(2).poke(v499)
+        dut.clock.step(1)
+        dut.io.in(1).poke(v500)
+        dut.io.in(2).poke(0.U(35.W))
+        dut.clock.step(1)
+        for (i <- 0 until 5) {
+          dut.io.in(i).poke(0.U(35.W))
+        }
+        dut.clock.step(5)
       }
   }
 }
