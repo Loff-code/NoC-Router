@@ -8,7 +8,7 @@ class tester extends AnyFlatSpec with ChiselScalatestTester {
       .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
         dut.clock.setTimeout(0)
 
-        val hdr1 = ((BigInt(0b11000011011) << 24)).U(35.W)
+        val hdr1 = ((BigInt(0b1100101110101) << 35-13)).U(35.W)
         val v496 = (((BigInt(0b100) << 32) | BigInt(496)).U(35.W))
         val v497 = (((BigInt(0b100) << 32) | BigInt(497)).U(35.W))
         val v498 = (((BigInt(0b100) << 32) | BigInt(498)).U(35.W))
@@ -25,7 +25,7 @@ class tester extends AnyFlatSpec with ChiselScalatestTester {
         for (i <- 0 until 4) {
           dut.io.in(i).poke(0.U(35.W))
         }
-        dut.clock.step(40)
+        dut.clock.step(200)
       }
   }
 }
