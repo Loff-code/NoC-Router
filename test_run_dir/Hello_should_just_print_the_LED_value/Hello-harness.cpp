@@ -147,9 +147,11 @@ struct sim_state {
     // std::cout << "poking: " << std::hex << u << std::endl;
     switch(id) {
       case 0 : dut->reset = u; break;
-      case 1 : dut->io_start = u; break;
-      case 2 : dut->io_a = u; break;
-      case 3 : dut->io_b = u; break;
+      case 1 : dut->io_in_0 = u; break;
+      case 2 : dut->io_in_1 = u; break;
+      case 3 : dut->io_in_2 = u; break;
+      case 4 : dut->io_in_3 = u; break;
+      case 5 : dut->io_in_4 = u; break;
 
     default:
       std::cerr << "Cannot find the object of id = " << id << std::endl;
@@ -161,11 +163,16 @@ struct sim_state {
     uint64_t value = 0;
     switch(id) {
       case 0 : value = dut->reset; break;
-      case 1 : value = dut->io_start; break;
-      case 2 : value = dut->io_a; break;
-      case 3 : value = dut->io_b; break;
-      case 4 : value = dut->io_gcd; break;
-      case 5 : value = dut->io_done; break;
+      case 1 : value = dut->io_in_0; break;
+      case 2 : value = dut->io_in_1; break;
+      case 3 : value = dut->io_in_2; break;
+      case 4 : value = dut->io_in_3; break;
+      case 5 : value = dut->io_in_4; break;
+      case 6 : value = dut->io_out_0; break;
+      case 7 : value = dut->io_out_1; break;
+      case 8 : value = dut->io_out_2; break;
+      case 9 : value = dut->io_out_3; break;
+      case 10 : value = dut->io_out_4; break;
 
     default:
       std::cerr << "Cannot find the object of id = " << id << std::endl;

@@ -69,87 +69,324 @@ void VHello::_eval_initial_loop(VHello__Syms* __restrict vlSymsp) {
 VL_INLINE_OPT void VHello::_sequent__TOP__1(VHello__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    VHello::_sequent__TOP__1\n"); );
     VHello* const __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Variables
-    CData/*2:0*/ __Vdly__Hello__DOT__stateReg;
     // Body
-    __Vdly__Hello__DOT__stateReg = vlTOPp->Hello__DOT__stateReg;
-    if (vlTOPp->reset) {
-        __Vdly__Hello__DOT__stateReg = 0U;
-    } else {
-        if ((0U == (IData)(vlTOPp->Hello__DOT__stateReg))) {
-            if (vlTOPp->io_start) {
-                __Vdly__Hello__DOT__stateReg = 1U;
-            }
-        } else {
-            __Vdly__Hello__DOT__stateReg = ((1U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                             ? ((vlTOPp->Hello__DOT__a 
-                                                 != vlTOPp->Hello__DOT__b)
-                                                 ? (IData)(vlTOPp->Hello__DOT___GEN_3)
-                                                 : 4U)
-                                             : ((2U 
-                                                 == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                                 ? 1U
-                                                 : (IData)(vlTOPp->Hello__DOT___GEN_8)));
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->Hello__DOT__a = 0U;
-    } else {
-        if ((0U == (IData)(vlTOPp->Hello__DOT__stateReg))) {
-            if (vlTOPp->io_start) {
-                vlTOPp->Hello__DOT__a = vlTOPp->io_a;
-            }
-        } else {
-            if ((1U != (IData)(vlTOPp->Hello__DOT__stateReg))) {
-                if ((2U == (IData)(vlTOPp->Hello__DOT__stateReg))) {
-                    vlTOPp->Hello__DOT__a = vlTOPp->Hello__DOT___a_T_1;
-                }
-            }
-        }
-    }
-    if (vlTOPp->reset) {
-        vlTOPp->Hello__DOT__b = 0U;
-    } else {
-        if ((0U == (IData)(vlTOPp->Hello__DOT__stateReg))) {
-            if (vlTOPp->io_start) {
-                vlTOPp->Hello__DOT__b = vlTOPp->io_b;
-            }
-        } else {
-            if ((1U != (IData)(vlTOPp->Hello__DOT__stateReg))) {
-                if ((2U != (IData)(vlTOPp->Hello__DOT__stateReg))) {
-                    vlTOPp->Hello__DOT__b = vlTOPp->Hello__DOT___GEN_7;
-                }
-            }
-        }
-    }
-    vlTOPp->Hello__DOT__stateReg = __Vdly__Hello__DOT__stateReg;
-    vlTOPp->Hello__DOT___GEN_8 = ((3U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                   ? 1U : (IData)(vlTOPp->Hello__DOT__stateReg));
-    vlTOPp->io_done = ((0U != (IData)(vlTOPp->Hello__DOT__stateReg)) 
-                       & ((1U != (IData)(vlTOPp->Hello__DOT__stateReg)) 
-                          & ((2U != (IData)(vlTOPp->Hello__DOT__stateReg)) 
-                             & ((3U != (IData)(vlTOPp->Hello__DOT__stateReg)) 
-                                & (4U == (IData)(vlTOPp->Hello__DOT__stateReg))))));
-    vlTOPp->Hello__DOT___GEN_3 = ((vlTOPp->Hello__DOT__a 
-                                   > vlTOPp->Hello__DOT__b)
-                                   ? 2U : 3U);
-    vlTOPp->Hello__DOT___a_T_1 = (vlTOPp->Hello__DOT__a 
-                                  - vlTOPp->Hello__DOT__b);
-    vlTOPp->io_gcd = ((0U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                       ? 0U : ((1U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                ? 0U : ((2U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                         ? 0U : ((3U 
-                                                  == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                                  ? 0U
-                                                  : 
-                                                 ((4U 
-                                                   == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                                   ? vlTOPp->Hello__DOT__a
-                                                   : 0U)))));
-    vlTOPp->Hello__DOT___GEN_7 = ((3U == (IData)(vlTOPp->Hello__DOT__stateReg))
-                                   ? (vlTOPp->Hello__DOT__b 
-                                      - vlTOPp->Hello__DOT__a)
-                                   : vlTOPp->Hello__DOT__b);
+    vlTOPp->Hello__DOT__linkStageReg_4 = vlTOPp->io_in_4;
+    vlTOPp->Hello__DOT__linkStageReg_3 = vlTOPp->io_in_3;
+    vlTOPp->Hello__DOT__linkStageReg_2 = vlTOPp->io_in_2;
+    vlTOPp->Hello__DOT__linkStageReg_1 = vlTOPp->io_in_1;
+    vlTOPp->Hello__DOT__linkStageReg_0 = vlTOPp->io_in_0;
+    vlTOPp->Hello__DOT__data_4 = ((1U & ((IData)((vlTOPp->Hello__DOT__linkStageReg_4 
+                                                  >> 0x21U)) 
+                                         & (IData)(
+                                                   (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                    >> 0x22U))))
+                                   ? (0xfffffffcU & 
+                                      ((IData)(vlTOPp->Hello__DOT__linkStageReg_4) 
+                                       << 2U)) : (IData)(vlTOPp->Hello__DOT__linkStageReg_4));
+    vlTOPp->Hello__DOT__data_3 = ((1U & ((IData)((vlTOPp->Hello__DOT__linkStageReg_3 
+                                                  >> 0x21U)) 
+                                         & (IData)(
+                                                   (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                    >> 0x22U))))
+                                   ? (0xfffffffcU & 
+                                      ((IData)(vlTOPp->Hello__DOT__linkStageReg_3) 
+                                       << 2U)) : (IData)(vlTOPp->Hello__DOT__linkStageReg_3));
+    vlTOPp->Hello__DOT__data_2 = ((1U & ((IData)((vlTOPp->Hello__DOT__linkStageReg_2 
+                                                  >> 0x21U)) 
+                                         & (IData)(
+                                                   (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                    >> 0x22U))))
+                                   ? (0xfffffffcU & 
+                                      ((IData)(vlTOPp->Hello__DOT__linkStageReg_2) 
+                                       << 2U)) : (IData)(vlTOPp->Hello__DOT__linkStageReg_2));
+    vlTOPp->Hello__DOT__data_1 = ((1U & ((IData)((vlTOPp->Hello__DOT__linkStageReg_1 
+                                                  >> 0x21U)) 
+                                         & (IData)(
+                                                   (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                    >> 0x22U))))
+                                   ? (0xfffffffcU & 
+                                      ((IData)(vlTOPp->Hello__DOT__linkStageReg_1) 
+                                       << 2U)) : (IData)(vlTOPp->Hello__DOT__linkStageReg_1));
+    vlTOPp->Hello__DOT__data = ((1U & ((IData)((vlTOPp->Hello__DOT__linkStageReg_0 
+                                                >> 0x21U)) 
+                                       & (IData)((vlTOPp->Hello__DOT__linkStageReg_0 
+                                                  >> 0x22U))))
+                                 ? (0xfffffffcU & ((IData)(vlTOPp->Hello__DOT__linkStageReg_0) 
+                                                   << 2U))
+                                 : (IData)(vlTOPp->Hello__DOT__linkStageReg_0));
+    vlTOPp->Hello__DOT__direction_4 = ((1U & ((IData)(
+                                                      (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                       >> 0x21U)) 
+                                              & (IData)(
+                                                        (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                         >> 0x22U))))
+                                        ? (3U & (vlTOPp->Hello__DOT__data_4 
+                                                 >> 0x1eU))
+                                        : 0U);
+    vlTOPp->Hello__DOT__HPUStageReg_4 = (((QData)((IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                      >> 0x22U))))) 
+                                          << 0x22U) 
+                                         | (((QData)((IData)(
+                                                             (1U 
+                                                              & (IData)(
+                                                                        (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                         >> 0x21U))))) 
+                                             << 0x21U) 
+                                            | (((QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                            >> 0x20U))))) 
+                                                << 0x20U) 
+                                               | (QData)((IData)(vlTOPp->Hello__DOT__data_4)))));
+    vlTOPp->Hello__DOT__direction_3 = ((1U & ((IData)(
+                                                      (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                       >> 0x21U)) 
+                                              & (IData)(
+                                                        (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                         >> 0x22U))))
+                                        ? (3U & (vlTOPp->Hello__DOT__data_3 
+                                                 >> 0x1eU))
+                                        : 0U);
+    vlTOPp->Hello__DOT__HPUStageReg_3 = (((QData)((IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                      >> 0x22U))))) 
+                                          << 0x22U) 
+                                         | (((QData)((IData)(
+                                                             (1U 
+                                                              & (IData)(
+                                                                        (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                         >> 0x21U))))) 
+                                             << 0x21U) 
+                                            | (((QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                            >> 0x20U))))) 
+                                                << 0x20U) 
+                                               | (QData)((IData)(vlTOPp->Hello__DOT__data_3)))));
+    vlTOPp->Hello__DOT__direction_2 = ((1U & ((IData)(
+                                                      (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                       >> 0x21U)) 
+                                              & (IData)(
+                                                        (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                         >> 0x22U))))
+                                        ? (3U & (vlTOPp->Hello__DOT__data_2 
+                                                 >> 0x1eU))
+                                        : 0U);
+    vlTOPp->Hello__DOT__HPUStageReg_2 = (((QData)((IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                      >> 0x22U))))) 
+                                          << 0x22U) 
+                                         | (((QData)((IData)(
+                                                             (1U 
+                                                              & (IData)(
+                                                                        (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                         >> 0x21U))))) 
+                                             << 0x21U) 
+                                            | (((QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                            >> 0x20U))))) 
+                                                << 0x20U) 
+                                               | (QData)((IData)(vlTOPp->Hello__DOT__data_2)))));
+    vlTOPp->Hello__DOT__direction_1 = ((1U & ((IData)(
+                                                      (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                       >> 0x21U)) 
+                                              & (IData)(
+                                                        (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                         >> 0x22U))))
+                                        ? (3U & (vlTOPp->Hello__DOT__data_1 
+                                                 >> 0x1eU))
+                                        : 0U);
+    vlTOPp->Hello__DOT__HPUStageReg_1 = (((QData)((IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                      >> 0x22U))))) 
+                                          << 0x22U) 
+                                         | (((QData)((IData)(
+                                                             (1U 
+                                                              & (IData)(
+                                                                        (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                         >> 0x21U))))) 
+                                             << 0x21U) 
+                                            | (((QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                            >> 0x20U))))) 
+                                                << 0x20U) 
+                                               | (QData)((IData)(vlTOPp->Hello__DOT__data_1)))));
+    vlTOPp->Hello__DOT__direction_0 = ((1U & ((IData)(
+                                                      (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                       >> 0x21U)) 
+                                              & (IData)(
+                                                        (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                         >> 0x22U))))
+                                        ? (3U & (vlTOPp->Hello__DOT__data 
+                                                 >> 0x1eU))
+                                        : 0U);
+    vlTOPp->Hello__DOT__HPUStageReg_0 = (((QData)((IData)(
+                                                          (1U 
+                                                           & (IData)(
+                                                                     (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                      >> 0x22U))))) 
+                                          << 0x22U) 
+                                         | (((QData)((IData)(
+                                                             (1U 
+                                                              & (IData)(
+                                                                        (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                         >> 0x21U))))) 
+                                             << 0x21U) 
+                                            | (((QData)((IData)(
+                                                                (1U 
+                                                                 & (IData)(
+                                                                           (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                            >> 0x20U))))) 
+                                                << 0x20U) 
+                                               | (QData)((IData)(vlTOPp->Hello__DOT__data)))));
+    vlTOPp->Hello__DOT___crossbarStageReg_T_9 = ((1U 
+                                                  & ((~ 
+                                                      ((IData)(
+                                                               (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                >> 0x20U)) 
+                                                       & (IData)(
+                                                                 (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                  >> 0x22U)))) 
+                                                     & ((IData)(
+                                                                (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                 >> 0x21U)) 
+                                                        & (IData)(
+                                                                  (vlTOPp->Hello__DOT__linkStageReg_4 
+                                                                   >> 0x22U)))))
+                                                  ? vlTOPp->Hello__DOT__HPUStageReg_4
+                                                  : 0ULL);
+    vlTOPp->Hello__DOT___crossbarStageReg_T_7 = ((1U 
+                                                  & ((~ 
+                                                      ((IData)(
+                                                               (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                >> 0x20U)) 
+                                                       & (IData)(
+                                                                 (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                  >> 0x22U)))) 
+                                                     & ((IData)(
+                                                                (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                 >> 0x21U)) 
+                                                        & (IData)(
+                                                                  (vlTOPp->Hello__DOT__linkStageReg_3 
+                                                                   >> 0x22U)))))
+                                                  ? vlTOPp->Hello__DOT__HPUStageReg_3
+                                                  : 0ULL);
+    vlTOPp->Hello__DOT___crossbarStageReg_T_5 = ((1U 
+                                                  & ((~ 
+                                                      ((IData)(
+                                                               (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                >> 0x20U)) 
+                                                       & (IData)(
+                                                                 (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                  >> 0x22U)))) 
+                                                     & ((IData)(
+                                                                (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                 >> 0x21U)) 
+                                                        & (IData)(
+                                                                  (vlTOPp->Hello__DOT__linkStageReg_2 
+                                                                   >> 0x22U)))))
+                                                  ? vlTOPp->Hello__DOT__HPUStageReg_2
+                                                  : 0ULL);
+    vlTOPp->Hello__DOT___crossbarStageReg_T_3 = ((1U 
+                                                  & ((~ 
+                                                      ((IData)(
+                                                               (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                >> 0x20U)) 
+                                                       & (IData)(
+                                                                 (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                  >> 0x22U)))) 
+                                                     & ((IData)(
+                                                                (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                 >> 0x21U)) 
+                                                        & (IData)(
+                                                                  (vlTOPp->Hello__DOT__linkStageReg_1 
+                                                                   >> 0x22U)))))
+                                                  ? vlTOPp->Hello__DOT__HPUStageReg_1
+                                                  : 0ULL);
+    vlTOPp->io_out_4 = ((3U == (IData)(vlTOPp->Hello__DOT__direction_3))
+                         ? vlTOPp->Hello__DOT__HPUStageReg_3
+                         : ((2U == (IData)(vlTOPp->Hello__DOT__direction_2))
+                             ? vlTOPp->Hello__DOT__HPUStageReg_2
+                             : ((1U == (IData)(vlTOPp->Hello__DOT__direction_1))
+                                 ? vlTOPp->Hello__DOT__HPUStageReg_1
+                                 : ((0U == (IData)(vlTOPp->Hello__DOT__direction_0))
+                                     ? vlTOPp->Hello__DOT__HPUStageReg_0
+                                     : 0ULL))));
+    vlTOPp->Hello__DOT___crossbarStageReg_T_1 = ((1U 
+                                                  & ((~ 
+                                                      ((IData)(
+                                                               (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                >> 0x20U)) 
+                                                       & (IData)(
+                                                                 (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                  >> 0x22U)))) 
+                                                     & ((IData)(
+                                                                (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                 >> 0x21U)) 
+                                                        & (IData)(
+                                                                  (vlTOPp->Hello__DOT__linkStageReg_0 
+                                                                   >> 0x22U)))))
+                                                  ? vlTOPp->Hello__DOT__HPUStageReg_0
+                                                  : 0ULL);
+    vlTOPp->io_out_0 = ((0U == (IData)(vlTOPp->Hello__DOT__direction_4))
+                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_9
+                         : ((0U == (IData)(vlTOPp->Hello__DOT__direction_3))
+                             ? vlTOPp->Hello__DOT___crossbarStageReg_T_7
+                             : ((0U == (IData)(vlTOPp->Hello__DOT__direction_2))
+                                 ? vlTOPp->Hello__DOT___crossbarStageReg_T_5
+                                 : ((0U == (IData)(vlTOPp->Hello__DOT__direction_1))
+                                     ? vlTOPp->Hello__DOT___crossbarStageReg_T_3
+                                     : ((0U == (IData)(vlTOPp->Hello__DOT__direction_0))
+                                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_1
+                                         : 0ULL)))));
+    vlTOPp->io_out_1 = ((1U == (IData)(vlTOPp->Hello__DOT__direction_4))
+                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_9
+                         : ((1U == (IData)(vlTOPp->Hello__DOT__direction_3))
+                             ? vlTOPp->Hello__DOT___crossbarStageReg_T_7
+                             : ((1U == (IData)(vlTOPp->Hello__DOT__direction_2))
+                                 ? vlTOPp->Hello__DOT___crossbarStageReg_T_5
+                                 : ((1U == (IData)(vlTOPp->Hello__DOT__direction_1))
+                                     ? vlTOPp->Hello__DOT___crossbarStageReg_T_3
+                                     : ((1U == (IData)(vlTOPp->Hello__DOT__direction_0))
+                                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_1
+                                         : 0ULL)))));
+    vlTOPp->io_out_2 = ((2U == (IData)(vlTOPp->Hello__DOT__direction_4))
+                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_9
+                         : ((2U == (IData)(vlTOPp->Hello__DOT__direction_3))
+                             ? vlTOPp->Hello__DOT___crossbarStageReg_T_7
+                             : ((2U == (IData)(vlTOPp->Hello__DOT__direction_2))
+                                 ? vlTOPp->Hello__DOT___crossbarStageReg_T_5
+                                 : ((2U == (IData)(vlTOPp->Hello__DOT__direction_1))
+                                     ? vlTOPp->Hello__DOT___crossbarStageReg_T_3
+                                     : ((2U == (IData)(vlTOPp->Hello__DOT__direction_0))
+                                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_1
+                                         : 0ULL)))));
+    vlTOPp->io_out_3 = ((3U == (IData)(vlTOPp->Hello__DOT__direction_4))
+                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_9
+                         : ((3U == (IData)(vlTOPp->Hello__DOT__direction_3))
+                             ? vlTOPp->Hello__DOT___crossbarStageReg_T_7
+                             : ((3U == (IData)(vlTOPp->Hello__DOT__direction_2))
+                                 ? vlTOPp->Hello__DOT___crossbarStageReg_T_5
+                                 : ((3U == (IData)(vlTOPp->Hello__DOT__direction_1))
+                                     ? vlTOPp->Hello__DOT___crossbarStageReg_T_3
+                                     : ((3U == (IData)(vlTOPp->Hello__DOT__direction_0))
+                                         ? vlTOPp->Hello__DOT___crossbarStageReg_T_1
+                                         : 0ULL)))));
 }
 
 void VHello::_eval(VHello__Syms* __restrict vlSymsp) {
@@ -188,7 +425,15 @@ void VHello::_eval_debug_assertions() {
         Verilated::overWidthError("clock");}
     if (VL_UNLIKELY((reset & 0xfeU))) {
         Verilated::overWidthError("reset");}
-    if (VL_UNLIKELY((io_start & 0xfeU))) {
-        Verilated::overWidthError("io_start");}
+    if (VL_UNLIKELY((io_in_0 & 0ULL))) {
+        Verilated::overWidthError("io_in_0");}
+    if (VL_UNLIKELY((io_in_1 & 0ULL))) {
+        Verilated::overWidthError("io_in_1");}
+    if (VL_UNLIKELY((io_in_2 & 0ULL))) {
+        Verilated::overWidthError("io_in_2");}
+    if (VL_UNLIKELY((io_in_3 & 0ULL))) {
+        Verilated::overWidthError("io_in_3");}
+    if (VL_UNLIKELY((io_in_4 & 0ULL))) {
+        Verilated::overWidthError("io_in_4");}
 }
 #endif  // VL_DEBUG

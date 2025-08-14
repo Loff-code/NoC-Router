@@ -1,7 +1,13 @@
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/Code/risc/chisel-lab/lab1/src/test/scala/HelloSpec.scala:14:42: value U is not a member of Int[0m
-[0m[[0m[31merror[0m] [0m[0m      val sInitial = if (ledInitial == 1.U) "No" else "Yes"[0m
-[0m[[0m[31merror[0m] [0m[0m                                         ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/Code/risc/chisel-lab/lab1/src/test/scala/HelloSpec.scala:21:33: value U is not a member of Int[0m
-[0m[[0m[31merror[0m] [0m[0m        val s = if (ledNow == 1.U) "No" else "Yes"[0m
-[0m[[0m[31merror[0m] [0m[0m                                ^[0m
-[0m[[0m[31merror[0m] [0m[0mtwo errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:16:16: value start is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
+[0m[[0m[31merror[0m] [0m[0m        dut.io.start.poke(true.B)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:17:16: value a is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
+[0m[[0m[31merror[0m] [0m[0m        dut.io.a.poke(48.U)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:18:16: value b is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
+[0m[[0m[31merror[0m] [0m[0m        dut.io.b.poke(18.U)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:20:16: value start is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
+[0m[[0m[31merror[0m] [0m[0m        dut.io.start.poke(false.B)[0m
+[0m[[0m[31merror[0m] [0m[0m               ^[0m
+[0m[[0m[31merror[0m] [0m[0mfour errors found[0m

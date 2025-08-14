@@ -27,21 +27,44 @@ VL_MODULE(VHello) {
     // propagate new values into/out from the Verilated model.
     VL_IN8(clock,0,0);
     VL_IN8(reset,0,0);
-    VL_IN8(io_start,0,0);
-    VL_OUT8(io_done,0,0);
-    VL_IN(io_a,31,0);
-    VL_IN(io_b,31,0);
-    VL_OUT(io_gcd,31,0);
+    VL_IN64(io_in_0,34,0);
+    VL_IN64(io_in_1,34,0);
+    VL_IN64(io_in_2,34,0);
+    VL_IN64(io_in_3,34,0);
+    VL_IN64(io_in_4,34,0);
+    VL_OUT64(io_out_0,34,0);
+    VL_OUT64(io_out_1,34,0);
+    VL_OUT64(io_out_2,34,0);
+    VL_OUT64(io_out_3,34,0);
+    VL_OUT64(io_out_4,34,0);
     
     // LOCAL SIGNALS
     // Internals; generally not touched by application code
-    CData/*2:0*/ Hello__DOT__stateReg;
-    CData/*2:0*/ Hello__DOT___GEN_3;
-    CData/*2:0*/ Hello__DOT___GEN_8;
-    IData/*31:0*/ Hello__DOT__a;
-    IData/*31:0*/ Hello__DOT__b;
-    IData/*31:0*/ Hello__DOT___a_T_1;
-    IData/*31:0*/ Hello__DOT___GEN_7;
+    CData/*1:0*/ Hello__DOT__direction_0;
+    CData/*1:0*/ Hello__DOT__direction_1;
+    CData/*1:0*/ Hello__DOT__direction_2;
+    CData/*1:0*/ Hello__DOT__direction_3;
+    CData/*1:0*/ Hello__DOT__direction_4;
+    IData/*31:0*/ Hello__DOT__data;
+    IData/*31:0*/ Hello__DOT__data_1;
+    IData/*31:0*/ Hello__DOT__data_2;
+    IData/*31:0*/ Hello__DOT__data_3;
+    IData/*31:0*/ Hello__DOT__data_4;
+    QData/*34:0*/ Hello__DOT__linkStageReg_0;
+    QData/*34:0*/ Hello__DOT__linkStageReg_1;
+    QData/*34:0*/ Hello__DOT__linkStageReg_2;
+    QData/*34:0*/ Hello__DOT__linkStageReg_3;
+    QData/*34:0*/ Hello__DOT__linkStageReg_4;
+    QData/*34:0*/ Hello__DOT__HPUStageReg_0;
+    QData/*34:0*/ Hello__DOT___crossbarStageReg_T_1;
+    QData/*34:0*/ Hello__DOT__HPUStageReg_1;
+    QData/*34:0*/ Hello__DOT___crossbarStageReg_T_3;
+    QData/*34:0*/ Hello__DOT__HPUStageReg_2;
+    QData/*34:0*/ Hello__DOT___crossbarStageReg_T_5;
+    QData/*34:0*/ Hello__DOT__HPUStageReg_3;
+    QData/*34:0*/ Hello__DOT___crossbarStageReg_T_7;
+    QData/*34:0*/ Hello__DOT__HPUStageReg_4;
+    QData/*34:0*/ Hello__DOT___crossbarStageReg_T_9;
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
