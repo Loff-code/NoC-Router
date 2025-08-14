@@ -1,6 +1,6 @@
 import chisel3._
 import chisel3.util._
-class Hello extends Module {
+class NoCRouter extends Module {
   val io = IO(new Bundle {
     val in  = Input(Vec(5, UInt(35.W)))
     val out = Output(Vec(5, UInt(35.W)))
@@ -58,9 +58,4 @@ class Hello extends Module {
 
   }
   io.out := crossbarStageReg
-}
-
-object Hello extends App {
-  emitVerilog(new Hello())
-  Array("--target-dir", "generated")
 }
