@@ -20,7 +20,6 @@ class NoCRouter extends Module {
   val header = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(33))))
   val end = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(32))))
   val data = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(31, 0))))
-  val headerData = WireDefault(VecInit((0 until 5).map(i => linkStageReg(i)(31, 0) << 2)))
 
 
   for (i <- 0 until 5) {
@@ -28,34 +27,36 @@ class NoCRouter extends Module {
     header(i) := linkStageReg(i)(33)
     end(i)    := linkStageReg(i)(32)
     data(i)   := linkStageReg(i)(31, 0)
-    headerData(i) := linkStageReg(i)(31, 0)<<2
     when(header(i) && valid(i)) {
       ongoing(i) := true.B
       direction(i) := data(i)(31, 30)
-      data(i) := headerData(i)(31,0)
     }
     when(RegNext(end(i) && valid(i))) {
       ongoing(i) := false.B
     }
-    HPUStageReg(i) := Cat(valid(i), header(i), end(i), data(i))
-//    crossbarStageReg(direction(i)) := (Mux(ongoing(i) === true.B, HPUStageReg(i), crossbarStageReg(direction(i))))
+    HPUStageReg(i) := Cat(valid(i), header(i), end(i), Mux(header(i),(data(i)<<2.U )(31,0) ,data(i)))
 
-    when(ongoing(i) === true.B){
-       when(direction(i) === i.U){
-        crossbarStageReg(4) := (HPUStageReg(i))
-      }.otherwise{
-         crossbarStageReg(direction(i)) := HPUStageReg(i)
-       }
-    }.otherwise{
-      when(direction(i) === i.U){
-        crossbarStageReg(4) := 0.U
-      }.otherwise{
-        crossbarStageReg(direction(i)) := 0.U
-      }
-    }
-
-
+//    when(ongoing(i) === true.B){
+//       when(direction(i) === i.U){
+//        crossbarStageReg(4) := (HPUStageReg(i))
+//      }.otherwise{
+//         crossbarStageReg(direction(i)) := HPUStageReg(i)
+//       }
+//    }.otherwise{
+//      when(direction(i) === i.U){
+//        crossbarStageReg(4) := 0.U
+//      }.otherwise{
+//        crossbarStageReg(direction(i)) := 0.U
+//      }
+//    }
 
   }
+  crossbarStageReg.foreach(_ := 0.U)
+  for (i <- 0 until 5) {
+    when(ongoing(i)){
+      crossbarStageReg(Mux(direction(i) === i.U, 4.U, direction(i))) := HPUStageReg(i)
+    }
+  }
+
   io.out := crossbarStageReg
 }

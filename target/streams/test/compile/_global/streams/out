@@ -1,13 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:16:16: value start is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
-[0m[[0m[31merror[0m] [0m[0m        dut.io.start.poke(true.B)[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:17:16: value a is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
-[0m[[0m[31merror[0m] [0m[0m        dut.io.a.poke(48.U)[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:18:16: value b is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
-[0m[[0m[31merror[0m] [0m[0m        dut.io.b.poke(18.U)[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:20:16: value start is not a member of chisel3.Bundle{val in: chisel3.Vec[chisel3.UInt]; val out: chisel3.Vec[chisel3.UInt]}[0m
-[0m[[0m[31merror[0m] [0m[0m        dut.io.start.poke(false.B)[0m
-[0m[[0m[31merror[0m] [0m[0m               ^[0m
-[0m[[0m[31merror[0m] [0m[0mfour errors found[0m
+[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:11:58: ';' expected but ')' found.[0m
+[0m[[0m[31merror[0m] [0m[0m        val hdr1 = BigInt(0b1100010011100010001) << 35-21).U(35.W)[0m
+[0m[[0m[31merror[0m] [0m[0m                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mone error found[0m

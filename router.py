@@ -1,6 +1,8 @@
 n, s, e, w = 0, 1, 2, 3
-route = [n, e, s, w, n, s, n, s]
+route = [e, s, w, n, n, e, n, e, w]
+
 str = "0b110"
 for i in route:
-    str += bin(i).split("b")[1]
-print(f"(BigInt({str}) << 35-{len(str)}).U(35.W)")
+    add = bin(i).split("b")[1]
+    str += add if len(add) > 1 else "0" + add
+print(f"(BigInt({str}) << 35-{len(str)-2}).U(35.W)")
