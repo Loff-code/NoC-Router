@@ -8,26 +8,30 @@ class tester extends AnyFlatSpec with ChiselScalatestTester {
       .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
         dut.clock.setTimeout(0)
 
-        val hdr1 = (BigInt(0b110100111000010001011) << 35-21).U(35.W)
+        val hdr1 = (BigInt(0b11010001000110010001100100011001011L) ).U(35.W)
         val v496 = (((BigInt(0b100) << 32) | BigInt(496)).U(35.W))
         val v497 = (((BigInt(0b100) << 32) | BigInt(497)).U(35.W))
         val v498 = (((BigInt(0b100) << 32) | BigInt(498)).U(35.W))
-        val v499 = (((BigInt(0b101) << 32) | BigInt(499)).U(35.W))
+        val v499 = (((BigInt(0b100) << 32) | BigInt(499)).U(35.W))
         val v500 = (((BigInt(0b101) << 32) | BigInt(500)).U(35.W))
 
         for (i <- 0 until 4) {
           dut.io.in(i).poke(0.U(35.W))
         }
         dut.io.in(0).poke(hdr1)
-//        dut.io.in(0).poke(v496)
-//        dut.clock.step(1)
-//        dut.io.in(0).poke(v497)
-//        dut.clock.step(1)
-//        dut.io.in(0).poke(v498)
-//        dut.clock.step(1)
-//        dut.io.in(0).poke(v499)
-//        dut.clock.step(1)
-       // dut.io.in(0).poke(v500)
+        dut.clock.step(1)
+        for (i <- 0 until 6) {
+          dut.io.in(0).poke(v496)
+          dut.clock.step(1)
+        }
+
+        dut.io.in(0).poke(v497)
+        dut.clock.step(1)
+        dut.io.in(0).poke(v498)
+        dut.clock.step(1)
+        dut.io.in(0).poke(v499)
+        dut.clock.step(1)
+        dut.io.in(0).poke(v500)
         dut.clock.step(1)
         for (i <- 0 until 4) {
           dut.io.in(i).poke(0.U(35.W))
