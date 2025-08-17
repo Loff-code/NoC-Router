@@ -35,21 +35,7 @@ class NoCRouter extends Module {
       ongoing(i) := false.B
     }
     HPUStageReg(i) := Cat(valid(i), header(i), end(i), Mux(header(i),(data(i)<<2.U )(31,0) ,data(i)))
-
-//    when(ongoing(i) === true.B){
-//       when(direction(i) === i.U){
-//        crossbarStageReg(4) := (HPUStageReg(i))
-//      }.otherwise{
-//         crossbarStageReg(direction(i)) := HPUStageReg(i)
-//       }
-//    }.otherwise{
-//      when(direction(i) === i.U){
-//        crossbarStageReg(4) := 0.U
-//      }.otherwise{
-//        crossbarStageReg(direction(i)) := 0.U
-//      }
-//    }
-
+    
   }
   crossbarStageReg.foreach(_ := 0.U)
   for (i <- 0 until 5) {
