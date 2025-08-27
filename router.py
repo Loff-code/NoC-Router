@@ -1,5 +1,5 @@
 n, s, e, w = 0, 1, 2, 3
-route = [e, n, e, n, w, n, e, n, w, n, e, n, w, n, e, w]
+route = [s,s,e,e,n,n,w,s,s,w,s,w,s,e,e,w]
 
 str = "0b110"
 for i in route:

@@ -1,7 +1,7 @@
 import chisel3._
 import chisel3.util._
 
-class Main(val size: Int = 4) extends Module {
+class Main(val size: Int = 3) extends Module {
   val io = IO(new Bundle {
     val in  = Input(Vec(size * size, UInt(35.W)))
     val out = Output(Vec(size * size, UInt(35.W)))
