@@ -1,4 +1,4 @@
-[0m[[0m[31merror[0m] [0m[0m/home/swaggo/code/lab1/src/test/scala/HelloSpec.scala:11:58: ';' expected but ')' found.[0m
-[0m[[0m[31merror[0m] [0m[0m        val hdr1 = BigInt(0b1100010011100010001) << 35-21).U(35.W)[0m
-[0m[[0m[31merror[0m] [0m[0m                                                         ^[0m
+[0m[[0m[31merror[0m] [0m[0mC:\Users\soren\new\NoC-Router\src\test\scala\HelloSpec.scala:5:7: tester is already defined as class tester[0m
+[0m[[0m[31merror[0m] [0m[0mclass tester extends AnyFlatSpec with ChiselScalatestTester {[0m
+[0m[[0m[31merror[0m] [0m[0m      ^[0m
 [0m[[0m[31merror[0m] [0m[0mone error found[0m
