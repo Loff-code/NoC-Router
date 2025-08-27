@@ -3,7 +3,7 @@ import chiseltest._
 import org.scalatest.flatspec.AnyFlatSpec
 
 class tester extends AnyFlatSpec with ChiselScalatestTester {
-  "Bullet test" should "pass" in {
+  "Around the world test" should "pass" in {
     test(new Main())
       .withAnnotations(Seq(WriteVcdAnnotation)) { dut =>
         dut.clock.setTimeout(0)
