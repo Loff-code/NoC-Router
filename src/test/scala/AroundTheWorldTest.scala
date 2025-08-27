@@ -15,29 +15,12 @@ class tester extends AnyFlatSpec with ChiselScalatestTester {
         val v499 = (((BigInt(0b100) << 32) | BigInt(499)).U(35.W))
         val v500 = (((BigInt(0b101) << 32) | BigInt(500)).U(35.W))
 
-        for (i <- 0 until 4) {
-          dut.io.in(i).poke(0.U(35.W))
-        }
         dut.io.in(0).poke(hdr1)
         dut.clock.step(1)
         dut.io.in(0).poke(v500)
-        // for (i <- 0 until 6) {
-        //   dut.io.in(0).poke(v496)
-        //   dut.clock.step(1)
-        // }
 
-        // dut.io.in(0).poke(v497)
         dut.clock.step(1)
          dut.io.in(0).poke(0.U(35.W))
-        // dut.io.in(0).poke(v498)
-        // dut.clock.step(1)
-        // dut.io.in(0).poke(v499)
-        // dut.clock.step(1)
-        // dut.io.in(0).poke(v500)
-        // dut.clock.step(1)
-        // for (i <- 0 until 4) {
-        //   dut.io.in(i).poke(0.U(35.W))
-        // }
         dut.clock.step(200)
       }
   }
